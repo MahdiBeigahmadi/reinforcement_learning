@@ -89,7 +89,6 @@ class ValueIterationAgent(ValueEstimationAgent):
                         if qValue > maxValue:
                             maxValue = qValue
                     newValues[state] = maxValue
-
             self.values = newValues
 
     def getValue(self, state):
