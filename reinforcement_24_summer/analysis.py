@@ -24,6 +24,7 @@ def question2():
     answerNoise = 0.2
     return answerDiscount, answerNoise
 
+
 def question3a():
     """
       Prefer the close exit (+1), risking the cliff (-10).
@@ -33,6 +34,7 @@ def question3a():
     answerLivingReward = -2
     return answerDiscount, answerNoise, answerLivingReward
     # If not possible, return 'NOT POSSIBLE'
+
 
 def question3b():
     """
@@ -44,6 +46,7 @@ def question3b():
     return answerDiscount, answerNoise, answerLivingReward
     # If not possible, return 'NOT POSSIBLE'
 
+
 def question3c():
     """
       Prefer the distant exit (+10), risking the cliff (-10).
@@ -53,6 +56,7 @@ def question3c():
     answerLivingReward = -2
     return answerDiscount, answerNoise, answerLivingReward
     # If not possible, return 'NOT POSSIBLE'
+
 
 def question3d():
     """
@@ -64,6 +68,7 @@ def question3d():
     return answerDiscount, answerNoise, answerLivingReward
     # If not possible, return 'NOT POSSIBLE'
 
+
 def question3e():
     """
       Avoid both exits and the cliff (so an episode should never terminate).
@@ -74,15 +79,18 @@ def question3e():
     return answerDiscount, answerNoise, answerLivingReward
     # If not possible, return 'NOT POSSIBLE'
 
+
 def question7():
     answerEpsilon = None
     answerLearningRate = None
-    return answerEpsilon, answerLearningRate
+    return "NOT POSSIBLE"
     # If not possible, return 'NOT POSSIBLE'
+
 
 if __name__ == '__main__':
     print('Answers to analysis questions:')
     import analysis
+
     for q in [q for q in dir(analysis) if q.startswith('question')]:
         response = getattr(analysis, q)()
         print('  Question %s:\t%s' % (q, str(response)))
