@@ -76,6 +76,7 @@ class ValueIterationAgent(ValueEstimationAgent):
 
     def runValueIteration(self):
         # Write value iteration code here
+        "*** YOUR CODE HERE ***"
         for i in range(self.iterations):
             newValues = util.Counter()
 
@@ -158,6 +159,7 @@ class PrioritizedSweepingValueIterationAgent(ValueIterationAgent):
         ValueIterationAgent.__init__(self, mdp, discount, iterations)
 
     def runValueIteration(self):
+        "*** YOUR CODE HERE ***"
         predecessors = {}
         for state in self.mdp.getStates():
             if not self.mdp.isTerminal(state):
