@@ -21,7 +21,9 @@ import re
 import sys
 import projectParams
 import random
+
 random.seed(0)
+
 
 # register arguments and set default values
 def readCommand(argv):
@@ -236,15 +238,16 @@ def getDepends(testParser, testRoot, question):
             allDeps = getDepends(testParser, testRoot, d) + allDeps
     return allDeps
 
+
 # get list of questions to grade
 def getTestSubdirs(testParser, testRoot, questionToGrade):
     problemDict = testParser.TestParser(
         os.path.join(testRoot, 'CONFIG')).parse()
-    if questionToGrade != None:
+    if questionToGrade is not None:
         questions = getDepends(testParser, testRoot, questionToGrade)
         if len(questions) > 1:
             print(('Note: due to dependencies, the following tests will be run: %s' %
-                  ' '.join(questions)))
+                   ' '.join(questions)))
         return questions
     if 'order' in problemDict:
         return problemDict['order'].split()
@@ -301,14 +304,17 @@ def evaluate(generateSolutions, testRoot, moduleDict, exceptionMap=ERROR_HINT_MA
                     testDict = testParser.TestParser(test_file).parse()
                     solutionDict = testParser.TestParser(solution_file).parse()
                     if printTestCase:
-                        return lambda grades: printTest(testDict, solutionDict) or testCase.execute(grades, moduleDict, solutionDict)
+                        return lambda grades: printTest(testDict, solutionDict) or testCase.execute(grades, moduleDict,
+                                                                                                    solutionDict)
                     else:
                         return lambda grades: testCase.execute(grades, moduleDict, solutionDict)
+
             question.addTestCase(testCase, makefun(testCase, solution_file))
 
         # Note extra function is necessary for scoping reasons
         def makefun(question):
             return lambda grades: question.execute(grades)
+
         setattr(sys.modules[__name__], q, makefun(question))
         questions.append((q, question.getMaxPoints()))
 

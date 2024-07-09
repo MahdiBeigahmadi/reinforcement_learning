@@ -10,9 +10,12 @@
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
-import queue
 
 import numpy as np
+
+import util
+from learningAgents import ValueEstimationAgent
+
 
 # valueIterationAgents.py
 # -----------------------
@@ -20,19 +23,12 @@ import numpy as np
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
-
-
-import mdp, util
-from queue import PriorityQueue
-
-from learningAgents import ValueEstimationAgent
-import collections
 
 
 class ValueIterationAgent(ValueEstimationAgent):
@@ -76,7 +72,7 @@ class ValueIterationAgent(ValueEstimationAgent):
 
     def runValueIteration(self):
         # Write value iteration code here
-        "*** YOUR CODE HERE ***"
+        """*** YOUR CODE HERE ***"""
         for i in range(self.iterations):
             newValues = util.Counter()
 
@@ -133,7 +129,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         return self.computeActionFromValues(state)
 
     def getAction(self, state):
-        "Returns the policy at the state (no exploration)."
+        """Returns the policy at the state (no exploration)."""
         return self.computeActionFromValues(state)
 
     def getQValue(self, state, action):
@@ -159,7 +155,7 @@ class PrioritizedSweepingValueIterationAgent(ValueIterationAgent):
         ValueIterationAgent.__init__(self, mdp, discount, iterations)
 
     def runValueIteration(self):
-        "*** YOUR CODE HERE ***"
+        """*** YOUR CODE HERE ***"""
         predecessors = {}
         for state in self.mdp.getStates():
             if not self.mdp.isTerminal(state):

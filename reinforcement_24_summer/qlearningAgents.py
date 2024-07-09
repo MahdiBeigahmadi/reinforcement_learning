@@ -12,10 +12,10 @@
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
 
-from game import *
-from learningAgents import ReinforcementAgent
+import random
+import util
 
-import random, util, math
+from learningAgents import ReinforcementAgent
 
 
 class QLearningAgent(ReinforcementAgent):
@@ -40,7 +40,7 @@ class QLearningAgent(ReinforcementAgent):
     """
 
     def __init__(self, **args):
-        "You can initialize Q-values here..."
+        """You can initialize Q-values here..."""
         ReinforcementAgent.__init__(self, **args)
 
         "*** YOUR CODE HERE ***"
@@ -53,7 +53,6 @@ class QLearningAgent(ReinforcementAgent):
           or the Q node value otherwise
         """
         "*** YOUR CODE HERE ***"
-        #util.raiseNotDefined()
         return self.qValues[(state, action)]
 
     def computeValueFromQValues(self, state):
@@ -94,9 +93,7 @@ class QLearningAgent(ReinforcementAgent):
         """
         # Pick Action
         legalActions = self.getLegalActions(state)
-        action = None
         "*** YOUR CODE HERE ***"
-        # util.raiseNotDefined()
         if not legalActions:
             return None
 
